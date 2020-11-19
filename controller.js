@@ -30,3 +30,20 @@ exports.showbyid = function(req, res){
             }
     });
 };
+
+// add user
+exports.adduser = function(req, res){
+    var email = req.body.user_email;
+    var password = req.body.user_password;
+    var username = req.body.user_name;
+
+    connection.query('INSERT INTO user (user_email, user_password, user_name) VALUES(?,?,?)',
+        [email, password, username],
+        function(error, rows, fields){
+            if(error){
+                console.log(error);
+            }else {
+                response.ok("Successfully added user", res)
+            }
+    });
+}
