@@ -11,9 +11,22 @@ exports.index = function(req, res){
 exports.showalldata = function(req, res){
     connection.query('SELECT * FROM user', function(error, rows, fields){
         if(error){
-            connection.log(error);
+            console.log(error);
         }else {
             response.ok(rows, res)
         }
+    });
+};
+
+// show all data based on id
+exports.showbyid = function(req, res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM user WHERE user_id = ?', [id], 
+        function(error, rows, fields){
+            if(error){
+                console.log(error);
+            }else {
+                response.ok(rows, res)
+            }
     });
 };
