@@ -18,4 +18,7 @@ module.exports = function(app){
     app.route('/edituser')
         .put(myjson.edituser);
 
+    app.route('/deleteuser')
+        .delete(myjson.deleteuser);
+
 }

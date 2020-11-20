@@ -65,3 +65,18 @@ exports.edituser = function(req, res){
             }
     });
 }
+
+// delete user by id
+exports.deleteuser = function(req, res){
+    var user_id = req.body.user_id;
+
+    connection.query('DELETE FROM user WHERE user_id = ?',
+        [user_id],
+        function(error, rows, fields){
+            if(error){
+                console.log(error);
+            }else {
+                response.ok("Successfully delete user", res)
+            }
+    });
+}
